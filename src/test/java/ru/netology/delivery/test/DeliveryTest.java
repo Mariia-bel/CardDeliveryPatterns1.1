@@ -39,15 +39,10 @@ class DeliveryTest {
 
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $x("//span[@class='button__text']").click();
-        $x("//input[@placeholder='Дата встречи']").val(secondMeetingDate);
+        $x("//button[contains(@class,'button')]").click();
+        $x("//input[@placeholder='Дата встречи']").setValue(secondMeetingDate);
         $x("//span[@class='button__text']").click();
         $x("//*[contains(text(),'Успешно!')]").shouldBe(Condition.visible, Duration.ofSeconds(15));
         $("[class='notification__content']").shouldHave(Condition.exactText("Встреча успешно запланирована на " + secondMeetingDate));
-
-
-
-
-
-
     }
 }
